@@ -31,8 +31,9 @@ class ChromeTest {
 
     @AfterEach
     void teardown() {
-        driver.quit();
-        driver = null;
+        if (driver != null) {
+            driver.quit();
+        }
     }
 
     @Test
@@ -40,9 +41,9 @@ class ChromeTest {
         driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Наталия");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79101001010");
-        driver.findElement(By.cssSelector("[data-test-id=agreement] .checkbox__box")).click();
+        driver.findElement(By.cssSelector("span.checkbox__box")).click();
         driver.findElement(By.cssSelector("[type=button]")).submit();
-        String text = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText();
+        String text = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText().trim();
         assertEquals("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.", text.trim());
     }
 
