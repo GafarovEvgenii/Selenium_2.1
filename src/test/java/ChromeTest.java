@@ -39,7 +39,7 @@ class ChromeTest {
     @Test
     void shouldSendForm() {
         driver.get("http://localhost:9999");
-        driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Наталия");
+        driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Гафарова Наталия");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79101001010");
         driver.findElement(By.cssSelector("span.checkbox__box")).click();
         driver.findElement(By.cssSelector("[type=button]")).submit();
